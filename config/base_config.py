@@ -410,6 +410,7 @@ class BaseConfig(cmt_config):
 
         categories = [
             Category("base", "base", selection="event >= 0"),
+            Category("base_NoSyst", "base", selection="event >= 0"),
             Category("base_fixedGenWeight", "base with genWeight (fixed)", selection="1"),
             Category("base_oldGenWeight", "base with old genWeight (no fix)", selection="1"),
             Category("baseline", "Baseline", selection="pairType >= 0 && pairType <= 2"),
@@ -453,22 +454,55 @@ class BaseConfig(cmt_config):
     
     def add_features(self):
         features = [
-            Feature("jet_pt", "Jet_pt", binning=(30, 0, 300),
-                x_title=Label("jet p_{T}"),
-                units="GeV"),
             Feature("nJet", "nJet", binning=(20, 0, 20),
                 x_title=Label("nJet")),
+            
+            Feature("jet_pt", "Jet_pt", binning=(30, 0, 300),
+                x_title=Label("jet p_{T}"),
+                units="GeV",
+                central="jet_smearing",
+                systematics=["jer", "jec"]),
+            Feature("jet_eta", "Jet_eta", binning=(20, 0, 300),
+                x_title=Label("jet #eta")),
+
+            Feature("muon_pt", "dau1_pt", binning=(20, 0, 200),
+                x_title=Label("p_{T}^{#mu}"),
+                units="GeV",
+                systematics=["tes"]),
+            Feature("muon_eta", "dau1_eta", binning=(20, -2.3, 2.3),
+                x_title=Label("#eta_{#mu}")),
+
+            Feature("ele_pt", "dau1_pt", binning=(30, 0, 300),
+                x_title=Label("p_{T}^{e}"),
+                units="GeV",
+                systematics=["tes"]),
+            Feature("ele_eta", "dau1_eta", binning=(20, -2.3, 2.3),
+                x_title=Label("#eta_{e}")),
+
+            Feature("tau_pt", "dau1_pt", binning=(30, 0, 300),
+                x_title=Label("p_{T}^{#tau1}"),
+                units="GeV",
+                systematics=["tes"]),
+            Feature("tau_eta", "dau1_eta", binning=(20, -2.1, 2.1),
+                x_title=Label("#eta_{#tau1}")),
+
+            Feature("lep1_pt_NoSyst", "dau1_pt", binning=(10, 50, 150),
+                x_title=Label("#tau_{1} p_{T}"),
+                units="GeV"),
+            Feature("lep2_pt_NoSyst", "dau2_pt", binning=(10, 50, 150),
+                x_title=Label("#tau_{1} p_{T}"),
+                units="GeV"),
 
             # bjet features
-            Feature("bjet1_pt", "Jet_pt.at(bjet1_JetIdx)", binning=(10, 50, 150),
-                x_title=Label("b_{1} p_{T}"),
+            Feature("bjet1_pt", "Jet_pt.at(bjet1_JetIdx)", binning=(30, 20, 200),
+                x_title=Label("p_{T}^{b1}"),
                 units="GeV",
                 central="jet_smearing",
                 selection="abs({{bjet1_eta}}) < 2.1", #[FIXME]?
                 systematics=["jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
-            Feature("bjet1_eta", "Jet_eta.at(bjet1_JetIdx)", binning=(20, -3.2, 3.2),
-                x_title=Label("b_{1} #eta")),
+            Feature("bjet1_eta", "Jet_eta.at(bjet1_JetIdx)", binning=(20, -2.4, 2.4),
+                x_title=Label("#eta_{b1}")),
             Feature("bjet1_phi", "Jet_phi.at(bjet1_JetIdx)", binning=(20, -5, 5),
                 x_title=Label("b_{1} #phi")),
             Feature("bjet1_mass", "Jet_mass.at(bjet1_JetIdx)", binning=(10, 50, 150),
@@ -576,8 +610,8 @@ class BaseConfig(cmt_config):
                 x_title=Label("#Delta R (#tau_{1}, #tau_{2})")),
 
             # MET
-            Feature("met_pt", "MET_pt", binning=(10, 50, 150),
-                x_title=Label("MET p_{T}"),
+            Feature("met_pt", "MET_pt", binning=(35, 0, 350),
+                x_title=Label("p_{T}^{miss}"),
                 units="GeV",
                 central="met_smearing",
                 systematics=["jer_MET", "tes_MET", "jec_MET"]), # "jec_MET_1", "jec_MET_2", "jec_MET_3", 

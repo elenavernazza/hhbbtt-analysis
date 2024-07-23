@@ -122,7 +122,7 @@ cross_section_dict = {
     # "ttz_llnunu":     0.2432,                   # XSDB unknown
 
     "ttz_qq":           0.5297,                   # AN and https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=SUS%2DRunIISpring15DR74%2D00037-,0.5297,-%C2%B1%200.0008
-    "ttz_qq":           0.5104,                   # XSDB unknown
+    # "ttz_qq":           0.5104,                   # XSDB unknown
     
     "ttzz":             0.001386,                 # AN and XSDB LO
 

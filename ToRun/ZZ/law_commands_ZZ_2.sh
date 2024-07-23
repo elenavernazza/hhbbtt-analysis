@@ -187,6 +187,36 @@ ewk_z,ewk_wplus,ewk_wminus,st_tw_antitop,st_tw_top,st_antitop,st_top,data_tau_a,
 python3 ToRun/MoveToEos.py --region CR --ver ul_2016_ZZ_v12,ul_2016_HIPM_ZZ_v12,ul_2017_ZZ_v12,ul_2018_ZZ_v12 \
     --cat cat_base --prd prod_240605 --grp zz
 
+
+# for the thesis
+law run FeaturePlot --version prod_240708 --PrePlot-skip-merging --PrePlot-version prod_240708 --config-name ul_${YEAR}_ZZ_v12 \
+ --feature-names ele_pt,ele_eta,bjet1_pt,bjet1_eta,met_pt \
+ --dataset-names dy,dy_ptz1,dy_ptz2,dy_ptz3,dy_ptz4,dy_ptz5,dy_ptz6,dy_0j,dy_1j,dy_2j,\
+wjets_ht1,wjets_ht2,wjets_ht3,wjets_ht4,wjets_ht5,wjets_ht6,wjets_ht7,wjets_ht8,tt_dl,tt_sl,tt_fh,\
+zz_sl_background,zz_dl,zz_fh,zz_lnu,zz_qnu,wz_lllnu,wz_lnuqq,wz_lnununu,wz_llqq,ww_llnunu,ww_lnuqq,ww_qqqq,zzz,wzz,www,wwz,\
+zh_htt,zh_hbb_zll,wminush_htt,wplush_htt,tth_bb,tth_tautau,ggH_ZZ,ggf_sm,ttw_lnu,ttw_qq,ttww,ttwz,ttwh,ttzh,ttz_llnunu,ttz_qq,ttzz,\
+ewk_z,ewk_wplus,ewk_wminus,st_tw_antitop,st_tw_top,st_antitop,st_top,data_etau_a,data_etau_b,data_etau_c,data_etau_d,data_etau_e \
+ --workers 20 --MergeCategorizationStats-version prod_240305 --Categorization-version prod_240326 \
+ --process-group-name zz --save-png --category-name base --region-name etau_os_iso  --stack --do-qcd --hide-data False
+law run FeaturePlot --version prod_240708 --PrePlot-skip-merging --PrePlot-version prod_240708 --config-name ul_${YEAR}_ZZ_v12 \
+ --feature-names muon_pt,muon_eta,bjet1_pt,bjet1_eta,met_pt \
+ --dataset-names dy,dy_ptz1,dy_ptz2,dy_ptz3,dy_ptz4,dy_ptz5,dy_ptz6,dy_0j,dy_1j,dy_2j,\
+wjets_ht1,wjets_ht2,wjets_ht3,wjets_ht4,wjets_ht5,wjets_ht6,wjets_ht7,wjets_ht8,tt_dl,tt_sl,tt_fh,\
+zz_sl_background,zz_dl,zz_fh,zz_lnu,zz_qnu,wz_lllnu,wz_lnuqq,wz_lnununu,wz_llqq,ww_llnunu,ww_lnuqq,ww_qqqq,zzz,wzz,www,wwz,\
+zh_htt,zh_hbb_zll,wminush_htt,wplush_htt,tth_bb,tth_tautau,ggH_ZZ,ggf_sm,ttw_lnu,ttw_qq,ttww,ttwz,ttwh,ttzh,ttz_llnunu,ttz_qq,ttzz,\
+ewk_z,ewk_wplus,ewk_wminus,st_tw_antitop,st_tw_top,st_antitop,st_top,data_mutau_a,data_mutau_b,data_mutau_c,data_mutau_d,data_mutau_e \
+ --workers 20 --MergeCategorizationStats-version prod_240305 --Categorization-version prod_240326 \
+ --process-group-name zz --save-png --category-name base --region-name mutau_os_iso --stack --do-qcd --hide-data False
+law run FeaturePlot --version prod_240708 --PrePlot-skip-merging --PrePlot-version prod_240708 --config-name ul_${YEAR}_ZZ_v12 \
+ --feature-names tau_pt,tau_eta,bjet1_pt,bjet1_eta,met_pt \
+ --dataset-names dy,dy_ptz1,dy_ptz2,dy_ptz3,dy_ptz4,dy_ptz5,dy_ptz6,dy_0j,dy_1j,dy_2j,\
+wjets_ht1,wjets_ht2,wjets_ht3,wjets_ht4,wjets_ht5,wjets_ht6,wjets_ht7,wjets_ht8,tt_dl,tt_sl,tt_fh,\
+zz_sl_background,zz_dl,zz_fh,zz_lnu,zz_qnu,wz_lllnu,wz_lnuqq,wz_lnununu,wz_llqq,ww_llnunu,ww_lnuqq,ww_qqqq,zzz,wzz,www,wwz,\
+zh_htt,zh_hbb_zll,wminush_htt,wplush_htt,tth_bb,tth_tautau,ggH_ZZ,ggf_sm,ttw_lnu,ttw_qq,ttww,ttwz,ttwh,ttzh,ttz_llnunu,ttz_qq,ttzz,\
+ewk_z,ewk_wplus,ewk_wminus,st_tw_antitop,st_tw_top,st_antitop,st_top,data_tau_a,data_tau_b,data_tau_c,data_tau_d,data_tau_e \
+ --workers 20 --MergeCategorizationStats-version prod_240305 --Categorization-version prod_240326 \
+ --process-group-name zz --save-png --category-name base --region-name tautau_os_iso --stack --do-qcd --hide-data False
+
 ###############################################################################################################################################
 # ANALYSIS ETAU, MUTAU, TAUTAU - AN CR (WITH AND WITHOUT CATEGORIES) PLOTS
 ###############################################################################################################################################
@@ -700,11 +730,43 @@ python3 RunAsymptoticLimits.py --ver ul_2016_ZZ_v12,ul_2016_HIPM_ZZ_v12,ul_2017_
     --feat dnn_ZZbbtt_kl_1 --featureDependsOnMass --prd prod_240528 --grp datacard_zz_res --move_eos --user_eos evernazz \
     --mass 200,210,220,230,240,250,260,280,300,320,350,360,400,450,500,550,600,650,700,750,800,850,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2200,2400,2500,2600,2800,3000,3500,4000,4500,5000
 
+###############################################################################################################################################
+##############################################################  CUTFLOW  ######################################################################
+###############################################################################################################################################
 
+# ZZbbtt
+law run PreprocessRDFWrapper --version prod_240712_CutFlow --category-names base_selection --config-name ul_${YEAR}_ZZ_v12 \
+ --dataset-names zz_sl_signal,GluGluToXToZZTo2B2Tau_M200,GluGluToXToZZTo2B2Tau_M210,GluGluToXToZZTo2B2Tau_M220,GluGluToXToZZTo2B2Tau_M230,GluGluToXToZZTo2B2Tau_M240,GluGluToXToZZTo2B2Tau_M250,\
+GluGluToXToZZTo2B2Tau_M260,GluGluToXToZZTo2B2Tau_M270,GluGluToXToZZTo2B2Tau_M280,GluGluToXToZZTo2B2Tau_M300,GluGluToXToZZTo2B2Tau_M320,GluGluToXToZZTo2B2Tau_M350,GluGluToXToZZTo2B2Tau_M360,\
+GluGluToXToZZTo2B2Tau_M400,GluGluToXToZZTo2B2Tau_M450,GluGluToXToZZTo2B2Tau_M500,GluGluToXToZZTo2B2Tau_M550,GluGluToXToZZTo2B2Tau_M600,GluGluToXToZZTo2B2Tau_M650,GluGluToXToZZTo2B2Tau_M700,\
+GluGluToXToZZTo2B2Tau_M750,GluGluToXToZZTo2B2Tau_M800,GluGluToXToZZTo2B2Tau_M850,GluGluToXToZZTo2B2Tau_M900,GluGluToXToZZTo2B2Tau_M1000,GluGluToXToZZTo2B2Tau_M1100,GluGluToXToZZTo2B2Tau_M1200,\
+GluGluToXToZZTo2B2Tau_M1300,GluGluToXToZZTo2B2Tau_M1400,GluGluToXToZZTo2B2Tau_M1500,GluGluToXToZZTo2B2Tau_M1600,GluGluToXToZZTo2B2Tau_M1700,GluGluToXToZZTo2B2Tau_M1800,GluGluToXToZZTo2B2Tau_M1900,\
+GluGluToXToZZTo2B2Tau_M2000,GluGluToXToZZTo2B2Tau_M2200,GluGluToXToZZTo2B2Tau_M2400,GluGluToXToZZTo2B2Tau_M2500,GluGluToXToZZTo2B2Tau_M2600,GluGluToXToZZTo2B2Tau_M2800,GluGluToXToZZTo2B2Tau_M3000,\
+GluGluToXToZZTo2B2Tau_M3500,GluGluToXToZZTo2B2Tau_M4000,GluGluToXToZZTo2B2Tau_M4500,GluGluToXToZZTo2B2Tau_M5000 \
+ --PreprocessRDF-modules-file modulesrdf_cutflow \
+ --PreprocessRDF-keep-and-drop-file keep_and_drop_file --PreprocessRDF-compute-filter-efficiency --workers 20 \
+ --PreprocessRDF-workflow htcondor --PreprocessRDF-htcondor-scheduler llrt3condor.in2p3.fr --PreprocessRDF-transfer-logs \
+ --PreprocessRDF-custom-condor-tag "include : /opt/exp_soft/cms/t3/t3queue |,T3queue=short,WNTag=el7"
 
+# ZbbHtt
+law run PreprocessRDFWrapper --version prod_240712_CutFlow --category-names base_selection --config-name ul_${YEAR}_ZbbHtt_v12 \
+ --dataset-names zh_zbb_htt_signal,ZprimeToZH_ZToBB_HToTauTau_M500,ZprimeToZH_ZToBB_HToTauTau_M600,ZprimeToZH_ZToBB_HToTauTau_M800,ZprimeToZH_ZToBB_HToTauTau_M1000,ZprimeToZH_ZToBB_HToTauTau_M1200,\
+ZprimeToZH_ZToBB_HToTauTau_M1400,ZprimeToZH_ZToBB_HToTauTau_M1600,ZprimeToZH_ZToBB_HToTauTau_M1800,ZprimeToZH_ZToBB_HToTauTau_M2000,ZprimeToZH_ZToBB_HToTauTau_M2500,\
+ZprimeToZH_ZToBB_HToTauTau_M3000,ZprimeToZH_ZToBB_HToTauTau_M3500,ZprimeToZH_ZToBB_HToTauTau_M4000,ZprimeToZH_ZToBB_HToTauTau_M4500,ZprimeToZH_ZToBB_HToTauTau_M5000 \
+ --PreprocessRDF-modules-file modulesrdf_cutflow \
+ --PreprocessRDF-keep-and-drop-file keep_and_drop_file --PreprocessRDF-compute-filter-efficiency --workers 20 \
+ --PreprocessRDF-workflow htcondor --PreprocessRDF-htcondor-scheduler llrt3condor.in2p3.fr --PreprocessRDF-transfer-logs \
+ --PreprocessRDF-custom-condor-tag "include : /opt/exp_soft/cms/t3/t3queue |,T3queue=short,WNTag=el7"
 
-
-
+# ZttHbb
+law run PreprocessRDFWrapper --version prod_240712_CutFlow --category-names base_selection --config-name ul_${YEAR}_ZttHbb_v12 \
+ --dataset-names zh_ztt_hbb_signal,ZprimeToZH_ZToTauTau_HToBB_M500,ZprimeToZH_ZToTauTau_HToBB_M600,ZprimeToZH_ZToTauTau_HToBB_M800,ZprimeToZH_ZToTauTau_HToBB_M1000,ZprimeToZH_ZToTauTau_HToBB_M1200,\
+ZprimeToZH_ZToTauTau_HToBB_M1400,ZprimeToZH_ZToTauTau_HToBB_M1600,ZprimeToZH_ZToTauTau_HToBB_M1800,ZprimeToZH_ZToTauTau_HToBB_M2000,ZprimeToZH_ZToTauTau_HToBB_M2500,\
+ZprimeToZH_ZToTauTau_HToBB_M3000,ZprimeToZH_ZToTauTau_HToBB_M3500,ZprimeToZH_ZToTauTau_HToBB_M4000,ZprimeToZH_ZToTauTau_HToBB_M4500,ZprimeToZH_ZToTauTau_HToBB_M5000 \
+ --PreprocessRDF-modules-file modulesrdf_cutflow \
+ --PreprocessRDF-keep-and-drop-file keep_and_drop_file --PreprocessRDF-compute-filter-efficiency --workers 20 \
+ --PreprocessRDF-workflow htcondor --PreprocessRDF-htcondor-scheduler llrt3condor.in2p3.fr --PreprocessRDF-transfer-logs \
+ --PreprocessRDF-custom-condor-tag "include : /opt/exp_soft/cms/t3/t3queue |,T3queue=short,WNTag=el7"
 
 ###############################################################################################################################################
 ##############################################################  TESTS  ########################################################################
@@ -734,3 +796,15 @@ zh_htt,zh_hbb_zll,wminush_htt,wplush_htt,tth_bb,tth_tautau,ggH_ZZ,ggf_sm,ttw_lnu
 ewk_z,ewk_wplus,ewk_wminus,st_tw_antitop,st_tw_top,st_antitop,st_top \
  --PrePlot-skip-merging --MergeCategorizationStats-version prod_240305 --Categorization-version prod_240318 --region-name os_iso \
  --workers 10 --process-group-name zz_sig_vs_bkg --save-png
+
+
+
+# test elliptical mass cut for boosted
+
+law run CategorizationWrapper --version prod_240703 --config-name ul_2018_ZZ_v12 \
+ --dataset-names GluGluToXToZZTo2B2Tau_M2000 --category-names ZZ_elliptical_cut_90_boosted_noPNet \
+ --PreprocessRDF-version prod_240305 \
+ --Categorization-base-category-name base_selection \
+ --Categorization-feature-modules-file modulesrdf_syst --workers 20 --Categorization-tasks-per-job 5 --Categorization-poll-interval 5 \
+ --Categorization-workflow htcondor --Categorization-htcondor-scheduler llrt3condor.in2p3.fr --Categorization-transfer-logs \
+ --Categorization-custom-condor-tag 'include : /opt/exp_soft/cms/t3/t3queue |,T3queue=short,WNTag=el7'
