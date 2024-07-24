@@ -90,6 +90,11 @@ def get_ZH_common_features():
             units="GeV",
             systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+        Feature("ZHKinFit_mass_fit_2", "ZHKinFit_mass", binning=(24, 180, 780),
+            x_title=Label("ZH mass (Kin. Fit)"),
+            units="GeV",
+            systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                            # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
         Feature("ZHKinFit_chi2", "ZHKinFit_chi2", binning=(30, 0, 50),
             x_title=Label("ZH #chi^{2} (Kin. Fit)"),
             systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
@@ -99,7 +104,17 @@ def get_ZH_common_features():
                 x_title=Label("DNN ZH"),
                 systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
-        
+
+        Feature("dnn_ZHbbtt_kl_2", "dnn_ZHbbtt_kl_1", binning=(20, 0, 1),
+                x_title=Label("DNN ZH"),
+                systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+
+        Feature("dnn_ZHbbtt_kl_3", "dnn_ZHbbtt_kl_1", binning=(30, 0, 1),
+                x_title=Label("DNN ZH"),
+                systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+
         Feature("dnn_ZHbbtt_kl_1_CR", "dnn_ZHbbtt_kl_1", binning=(30, 0, 1),
                 x_title=Label("DNN ZH"),
                 systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 

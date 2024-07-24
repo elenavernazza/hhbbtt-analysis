@@ -2,7 +2,7 @@
 from analysis_tools import ObjectCollection, Category, Process, Dataset, Feature, Systematic
 from analysis_tools.utils import DotDict
 
-from config.ul_2016_HIPM_v12 import get_common_datasets_v12
+from config.ul_2016_HIPM_v12_Theo import get_common_datasets_v12
 from config.ul_2016_HIPM_v9 import get_common_datasets_v9
 
 def get_datasets_ZH_2016_HIPM(self):
