@@ -121,7 +121,7 @@ def get_ZH_common_features():
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
         
         *[Feature(f"dnn_ZHbbtt_kl_1_{mass}", f"dnn_ZHbbtt_kl_1_{mass}", binning=(10, 0, 1),
-                x_title=Label(f"DNN ZH resonant {mass}"),
+                x_title=Label(f"PNN ZH {mass} GeV" if mass < 1000 else f"PNN ZH {mass/1000:g} TeV"),
                 systematics=["tes", "jer", "jec"]) # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
         for mass in resonant_masses_ZH]
@@ -153,7 +153,7 @@ def get_ZH_common_processes():
         Process("zh_zbb_htt_background", Label("ZH (H#rightarrow#tau#tau) bkg"), parent_process='zh',
                 ProcType="Zbb_Htautau", isBkgBBTT=True, color=(224, 190, 79)),
         # resonant
-        *[Process(f"Zprime_Zh_Zbbhtautau_M{mass}", Label(f"Z' {mass} GeV" if mass < 1000 else f"Z' {mass/1000:g} TeV"), color=next(colors_res), 
+        *[Process(f"Zprime_Zh_Zbbhtautau_M{mass}", Label(f"qqZ' {mass} GeV" if mass < 1000 else f"qqZ' {mass/1000:g} TeV"), color=next(colors_res), 
                 isSigBBTT=True, ProcType="Zbb_Htautau", isSignal=True, llr_name="ZprimeZbbHtt")
             for mass in resonant_masses_ZH],
         
@@ -170,7 +170,7 @@ def get_ZH_common_processes():
         Process("zh_ztt_hbb_background", Label("ZH (Z#rightarrow ll, H#rightarrow bb) bkg"), parent_process='zh',
                 ProcType="Ztautau_Hbb", isBkgBBTT=True, color=(224, 190, 79)),
         # resonant
-        *[Process(f"Zprime_Zh_Ztautauhbb_M{mass}", Label(f"Z' {mass} GeV" if mass < 1000 else f"Z' {mass/1000:g} TeV"), color=next(colors_res),
+        *[Process(f"Zprime_Zh_Ztautauhbb_M{mass}", Label(f"qqZ' {mass} GeV" if mass < 1000 else f"qqZ' {mass/1000:g} TeV"), color=next(colors_res),
                     isSigBBTT=True, ProcType="Ztautau_Hbb", isSignal=True, llr_name="ZprimeZttHbb")
             for mass in resonant_masses_ZH],
 
