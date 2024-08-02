@@ -2,7 +2,7 @@
 from analysis_tools import ObjectCollection, Category, Process, Dataset, Feature, Systematic
 from analysis_tools.utils import DotDict
 
-from config.ul_2016_v12_Theo import get_common_datasets_v12
+from config.ul_2016_v12 import get_common_datasets_v12
 from config.ul_2016_v9 import get_common_datasets_v9
 
 
