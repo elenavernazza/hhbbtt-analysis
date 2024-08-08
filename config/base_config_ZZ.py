@@ -353,8 +353,19 @@ class Config(BaseConfig):
                 x_title=Label("DNN ZZ"),
                 systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+
+            Feature("dnn_ZZbbtt_kl_500", "dnn_ZZbbtt_kl_1", binning=(500, 0, 1),
+                x_title=Label("DNN ZZ"),
+                systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
             
             *[Feature(f"dnn_ZZbbtt_kl_1_{mass}", f"dnn_ZZbbtt_kl_1_{mass}", binning=(10, 0, 1),
+                x_title=Label(f"PNN ZZ {mass} GeV" if mass < 1000 else f"PNN ZZ {mass/1000:g} TeV"),
+                systematics=["tes", "jer", "jec"]) # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+            for mass in res_mass_ZZ],
+
+            *[Feature(f"dnn_ZZbbtt_kl_500_{mass}", f"dnn_ZZbbtt_kl_1_{mass}", binning=(500, 0, 1),
                 x_title=Label(f"PNN ZZ {mass} GeV" if mass < 1000 else f"PNN ZZ {mass/1000:g} TeV"),
                 systematics=["tes", "jer", "jec"]) # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
@@ -367,6 +378,7 @@ class Config(BaseConfig):
     def add_processes(self):
         processes, process_group_names, process_training_names = get_common_processes()
         colors_res = itertools.cycle([(31, 0, 117), (4, 41, 100), (0, 55, 101), (0, 66, 106), (0, 78, 110), (0, 88, 113), (0, 99, 115), (0, 109, 115), (0, 119, 114), (0, 129, 111), (0, 139, 105), (14, 148, 99), (48, 155, 92), (78, 161, 84), (103, 165, 76), (127, 169, 68), (151, 172, 60), (174, 174, 55)])
+        colors_res = itertools.cycle([(4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100), (4, 41, 100)])
         
         processes += ObjectCollection([
 

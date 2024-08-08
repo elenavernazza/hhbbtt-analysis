@@ -1,16 +1,27 @@
+# Finding cross-sections :
+# - XSDB
+# - https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
+# - https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO
+# - https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec
+# - https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopNNLORef
+
 cross_section_dict = {
 
     "zz_sl":            3.22,                     # https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=HIG%2DRunIIWinter15GS%2D00166-,3.22,-NLO%2C%20up%20to
-    # "zz_sl":          3.676,                    # XSDB unknown
+    # "zz_sl":          3.676,                    # XSDB unknown (ZZTo2Q2L_mllmin4p0_TuneCP5_13TeV-amcatnloFXFX-pythia8), probaly should use this one ?
     # "zz_sl":          5.52,                     # AN
 
-    "zh_htt":           0.053034, # = 0.8839*0.06 (sigma(pp->ZH) from theory) * BR(H->tautau) #0.7891 (XSDB NLO)  --> WHy are they different ? TODO
+    # ZHToTauTau_M125_CP5_13TeV-powheg-pythia8
+    # XSDB : 0.7891 but H->tautau decay done with Pythia so need to *BR(H->tautau)=0.06 -> 0.047346
+    "zh_htt":           0.053034, # = 0.8839*0.06 (sigma(pp->ZH) from theory) * BR(H->tautau) #0.7891 (XSDB NLO)
     # "zh_htt":         0.0554,                   # AN
 
-    "zh_hbb_zll":       0.01573871102, # = 0.8839*0.0335962*0.53 (sigma(pp->ZH) from theory) * BR(Z->ll)*BR(H->bb)  #0.07977 ( XSDB NLO) TODO
+    # ZH_HToBB_ZToLL_M-125_TuneCP5_13TeV-powheg-pythia8
+    # XSDB 0.07977	but H->bb decay done with Pythia so *BR(H->bb)=0.53  -> 0.0423
+    "zh_hbb_zll":       0.0472, # = 0.8839*(0.0335962*3)*0.53 (sigma(pp->ZH) from theory) * BR(Z->ll)*BR(H->bb)  
     # "zh_hbb_zll":     0.052,                    # AN
 
-    "wjets_FXFX":       61526.7,                  # XSDB
+    "wjets_FXFX":       61526.7,                  # theory (XSDB 67350.0 or 66680.0)
     "wjets_FXFX_0j":    52780.0/64888.0*61526.7,  # CMSDAS
     "wjets_FXFX_1j":    8832.0/64888.0*61526.7,   # CMSDAS
     "wjets_FXFX_2j":    3276.0/64888.0*61526.7,   # CMSDAS
@@ -28,7 +39,7 @@ cross_section_dict = {
     "wjets_ht7":        1.152 * 61526.7 / 53870,  # LO * NNLO(incl)/LO(incl) : NNLO inclusive xs=61526.7 , LO inclusive xs=53870 (XSDB) , kfactor LO->NNLO = 61526.7 / 53870 = 1.14
     "wjets_ht8":        0.02646 * 61526.7 / 53870,# LO * NNLO(incl)/LO(incl) : NNLO inclusive xs=61526.7 , LO inclusive xs=53870 (XSDB) , kfactor LO->NNLO = 61526.7 / 53870 = 1.14
 
-    "dy":               6424.0,                   # XSDB
+    "dy":               6424.0,                   # XSDB : TODO use value from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV maybe ?
     "dy_ptz1":          1485.0,                   # XSDB
     "dy_ptz2":          397.4,                    # XSDB
     "dy_ptz3":          97.2,                     # XSDB
@@ -39,26 +50,27 @@ cross_section_dict = {
     "dy_1j":            983.5,                    # XSDB
     "dy_2j":            353.6,                    # XSDB
 
-    "ewk_z":            6.215,                    # XSDB NLO
-    "ewk_wplus":        39.05,                    # XSDB NLO
-    "ewk_wminus":       32.05,                    # XSDB NLO
+    "ewk_z":            6.215,                    # XSDB LO
+    "ewk_wplus":        39.05,                    # XSDB LO
+    "ewk_wminus":       32.05,                    # XSDB LO
 
-    "tt_dl":            88.29,                    # XSDB NNLO
-    "tt_sl":            365.34,                   # XSDB NNLO
-    "tt_fh":            377.96,                   # XSDB NNLO
+    # XSDB from genxsec shows way higher xs but then there is weird Pythia filter to remove ttZ/gamma overlap
+    "tt_dl":            88.29,                    # XSDB NNLO (from theory) +4.8%-6.1%
+    "tt_sl":            365.34,                   # XSDB NNLO (from theory) +4.8%-6.1%
+    "tt_fh":            377.96,                   # XSDB NNLO (from theory) +4.8%-6.1%	
 
-    "st_tw_antitop":    35.85,                    # 0.5 * https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=a2-,71.7,-%2B1.326
-    "st_tw_top":        35.85,                    # 0.5 * https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=a2-,71.7,-%2B1.326
-    "st_antitop":       80.95,                    # https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=anti%2Dtop-,80.95,-%2B2.53%20%2D1.71
-    "st_top":           136.02,                   # https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=top-,136.02,-%2B4.09%20%2D2.92
+    "st_tw_antitop":    35.85,                    # 0.5 * https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=a2-,71.7,-%2B1.326 (XSDB 34.97 or 32.51)
+    "st_tw_top":        35.85,                    # 0.5 * https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=a2-,71.7,-%2B1.326 (XSDB 34.91 or 32.45	)
+    "st_antitop":       80.0,                     # NNLO theory https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopNNLORef#Single_top_quark_t_channel_cross (XSDB 69.09 or 67.93 Powheg NLO : TODO why is there significant difference ?)
+    "st_top":           134.2,                    # NNLO theory https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec#:~:text=top-,136.02,-%2B4.09%20%2D2.92 (XSDB 115.3 or 113.4)
 
-    "zz_dl":            1.2564,                   # 9 * 4 * https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV#:~:text=%CE%BC%CE%BC%20Z%20%E2%86%92%20ee-,0.0349,-%C2%B1%200.0011%20(%C2%B1%200.0016)
+    "zz_dl":            1.2564,                   # 9 * 4 * https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV#:~:text=%CE%BC%CE%BC%20Z%20%E2%86%92%20ee-,0.0349,-%C2%B1%200.0011%20(%C2%B1%200.0016) 
     # "zz_dl":          1.26,                     # AN 
     # "zz_dl":          1.325,                    # XSDB NLO
     # "zz_dl":          1.212,                    # https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#W_jets:~:text=SMP%2DRunIISpring15DR74%2D00026-,1.212,-NLO%2C%20up%20to
     # "zz_dl":          1.204,                    # https://xsdb-temp.app.cern.ch/?searchQuery=DAS=ZZTo4L_13TeV-amcatnloFXFX-pythia8
 
-    "zz_fh":            3.262,                    # XSDB unknown
+    "zz_fh":            3.262,                    # XSDB unknown (NLO probably)
 
     "zz_lnu":           0.564,                    # AN and https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=XXX-,0.564,-NLO
     # "zz_lnu":         0.6008,                   # XSDB
@@ -122,7 +134,7 @@ cross_section_dict = {
     # "ttz_llnunu":     0.2432,                   # XSDB unknown
 
     "ttz_qq":           0.5297,                   # AN and https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=SUS%2DRunIISpring15DR74%2D00037-,0.5297,-%C2%B1%200.0008
-    # "ttz_qq":           0.5104,                   # XSDB unknown
+    "ttz_qq":           0.5104,                   # XSDB unknown
     
     "ttzz":             0.001386,                 # AN and XSDB LO
 
@@ -158,7 +170,12 @@ cross_section_dict = {
     # "vbf_sm":         0.001726,
 
     # Cross-sections for resonant ZH signal. Assuming cross-section of Z'->ZH is one.
-    # TODO remove * 0.876 as I think that should not be there (taken into account by norm using aux dataset ???)
-    "ZprimeToZH_ZToBB_HToTauTau" : 1 * 0.009 * 0.876, # sigma(Z'->ZH) * BR(Z->bb, H->tautau) * BR(tautau->mutau,etau,tautau)
-    "ZprimeToZH_ZToTauTau_HToBB" : 1 * 0.019 * 0.876, # sigma(Z'->ZH) * BR(Z->tautau, H->bb) * BR(tautau->mutau,etau,tautau)
+    # removed * 0.876 (* BR(tautau->mutau,etau,tautau)) as I think that should not be there (taken into account by norm using aux dataset ???)
+    "ZprimeToZH_ZToBB_HToTauTau" : 1 * 0.009, # sigma(Z'->ZH) * BR(Z->bb, H->tautau) 
+    "ZprimeToZH_ZToTauTau_HToBB" : 1 * 0.019, # sigma(Z'->ZH) * BR(Z->tautau, H->bb) 
+    # for info : BR(Z'->ZH) ~ 0.47 in HVT model B (actually Z' mass-dependent) extracted from plot in B2G-23-008
+
+    # ggX->ZZ cross sections (from AN19/131)
+    # Radion (lambda 3TeV, krpi 35) mass=1TeV sigma(pp->R)xBR(ZZ) = 0.12 pb + (from B2G) sigma(pp->R)=0.256pb -> BR(R->ZZ)=0.47
+    # mass = 3TeV -> 0.00064
 }

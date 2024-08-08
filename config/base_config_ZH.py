@@ -115,12 +115,23 @@ def get_ZH_common_features():
                 systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
 
+        Feature("dnn_ZHbbtt_kl_500", "dnn_ZHbbtt_kl_1", binning=(500, 0, 1),
+                x_title=Label("DNN ZH"),
+                systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+
         Feature("dnn_ZHbbtt_kl_1_CR", "dnn_ZHbbtt_kl_1", binning=(30, 0, 1),
                 x_title=Label("DNN ZH"),
                 systematics=["tes", "jer", "jec"]), # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
         
         *[Feature(f"dnn_ZHbbtt_kl_1_{mass}", f"dnn_ZHbbtt_kl_1_{mass}", binning=(10, 0, 1),
+                x_title=Label(f"PNN ZH {mass} GeV" if mass < 1000 else f"PNN ZH {mass/1000:g} TeV"),
+                systematics=["tes", "jer", "jec"]) # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
+                             # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
+        for mass in resonant_masses_ZH],
+
+        *[Feature(f"dnn_ZHbbtt_kl_500_{mass}", f"dnn_ZHbbtt_kl_1_{mass}", binning=(500, 0, 1),
                 x_title=Label(f"PNN ZH {mass} GeV" if mass < 1000 else f"PNN ZH {mass/1000:g} TeV"),
                 systematics=["tes", "jer", "jec"]) # "jec_1", "jec_2", "jec_3", "jec_4", "jec_5", "jec_6", 
                              # "jec_7", "jec_8", "jec_9", "jec_10", "jec_11"]),
