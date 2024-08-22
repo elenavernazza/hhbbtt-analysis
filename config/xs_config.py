@@ -7,9 +7,10 @@
 
 cross_section_dict = {
 
-    "zz_sl":            3.22,                     # https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=HIG%2DRunIIWinter15GS%2D00166-,3.22,-NLO%2C%20up%20to
+    # "zz_sl":          3.22,                     # https://twiki.cern.ch/twiki/bin/view/CMS/SummaryTable1G25ns#Diboson:~:text=HIG%2DRunIIWinter15GS%2D00166-,3.22,-NLO%2C%20up%20to
     # "zz_sl":          3.676,                    # XSDB unknown (ZZTo2Q2L_mllmin4p0_TuneCP5_13TeV-amcatnloFXFX-pythia8), probaly should use this one ?
     # "zz_sl":          5.52,                     # AN
+    "zz_sl":            2.3331506672,
 
     # ZHToTauTau_M125_CP5_13TeV-powheg-pythia8
     # XSDB : 0.7891 but H->tautau decay done with Pythia so need to *BR(H->tautau)=0.06 -> 0.047346
